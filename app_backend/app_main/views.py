@@ -11,3 +11,14 @@ class MovieDetailView(DetailView):
         context["mov_menu"] = mov_menu
 
         return context
+    
+class HomeView(ListView):
+    model = Movies
+    ordering = ['-average_rating']
+
+    def get_context_data(self, *args, **kwargs):
+        cat_menu = Movies.objects.all()
+        context = super(HomeView, self).get_context_data(*args, **kwargs)
+        context["cat_menu"] = cat_menu
+
+        return context

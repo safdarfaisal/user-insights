@@ -15,7 +15,7 @@ class Movies(models.Model):
     review = models.TextField()
 
     def __str__(self):
-        return {self.movie_name}
+        return f"{self.movie_name} ({self.year}) - {self.average_rating}⭐"
     
     def get_absolute_url(self):
         return reverse('movie-detail', args=[str(self.id)])
