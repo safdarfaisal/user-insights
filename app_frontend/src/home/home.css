@@ -1,0 +1,22 @@
+.homeContainer {
+  width: 100vw;
+  height: 100vh;
+}
+.navbar {
+  position: sticky;
+  display: flex;
+  gap: 20px;
+  width: calc(100vw - 60px);
+  padding: 30px;
+  justify-content: flex-end;
+  align-items: center;
+}
+.navItem {
+  color: #fff;
+  cursor: pointer;
+}
+.navItemFirst {
+  font-weight: 700;
+  font-size: 1.5rem;
+  margin-right: auto;
+}

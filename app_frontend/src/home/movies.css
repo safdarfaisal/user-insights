@@ -1,0 +1,50 @@
+.movies {
+  display: flex;
+  flex-direction: column;
+  width: calc(100% - 80px);
+  color: white;
+  align-items: flex-start;
+  padding: 40px;
+  gap: 20px;
+}
+.moviesContainer {
+  width: 100%;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+.moviesItem {
+  cursor: pointer;
+}
+.moviesImage {
+  width: 150px;
+  height: 220px;
+}
+.movieShowcaserBackground {
+  position: fixed;
+  z-index: 2;
+  color: #fff;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.movieShowcaser {
+  height: 50vh;
+  width: 50vw;
+  background-color: #222;
+  border-radius: 20px;
+  padding: 20px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+.movieShowcaserClose {
+  align-self: flex-end;
+  cursor: pointer;
+}
