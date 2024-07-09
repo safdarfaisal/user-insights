@@ -1,28 +1,37 @@
+import React, { useState } from 'react';
+import Home from './home/index.js';
 import './App.css';
 
 function App() {
+  const [user, setUser] = useState('');
   return (
     <div className='App'>
-      <div className='Loginbox'>
-        <p className='LoginBoxHeader'>Login</p>
-        <div className='LoginBoxContainer'>
-          <p>User Name:</p>
-          <input
-            type='text'
-            id='uname'
-            name='uname'
-            className='LoginBoxInput'
-          ></input>
-          <p>Password:</p>
-          <input
-            type='password'
-            id='uname'
-            name='uname'
-            className='LoginBoxInput'
-          ></input>
-          <button className='LoginBoxButton'>Submit</button>
+      {!user ? (
+        <div className='Loginbox'>
+          <p className='LoginBoxHeader'>Login</p>
+          <div className='LoginBoxContainer'>
+            <p>User Name:</p>
+            <input
+              type='text'
+              id='uname'
+              name='uname'
+              className='LoginBoxInput'
+            ></input>
+            <p>Password:</p>
+            <input
+              type='password'
+              id='uname'
+              name='uname'
+              className='LoginBoxInput'
+            ></input>
+            <button className='LoginBoxButton' onClick={() => setUser('Rohan')}>
+              Submit
+            </button>
+          </div>
         </div>
-      </div>
+      ) : (
+        <Home user={user} />
+      )}
     </div>
   );
 }
