@@ -10,6 +10,8 @@ body {
   text-align: center;
   font-family: 'Open Sans', sans-serif;
   display: flex;
+  flex-direction: column;
+  gap: 20px;
   justify-content: center;
   align-items: center;
   height: 100vh;
