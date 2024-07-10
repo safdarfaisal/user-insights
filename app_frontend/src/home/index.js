@@ -10,7 +10,12 @@ const Home = ({ user }) => {
   return (
     <div className='homeContainer'>
       <div className='navbar'>
-        <div className='navItem navItemFirst'>Hi {user}!</div>
+        <div
+          className='navItem navItemFirst'
+          onClick={() => setNavTab('movies')}
+        >
+          Hi {user}!
+        </div>
         <div className='navItem' onClick={() => setNavTab('movies')}>
           Movies
         </div>

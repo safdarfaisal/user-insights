@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Reviews from '../reusable/Reviews.js';
 import './movies.css';
 
 const MovieShowcaser = ({ setShowMovie }) => {
@@ -6,35 +7,44 @@ const MovieShowcaser = ({ setShowMovie }) => {
     <div className='movieShowcaserBackground'>
       <div>
         <div className='movieShowcaser'>
-          <p
-            className='movieShowcaserClose'
-            onClick={() => {
-              setShowMovie(false);
-            }}
-          >
-            X
-          </p>
-          <h2>Movie Name</h2>
-          <p style={{ textAlign: 'left' }}>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to make a type specimen book. It has survived not
-            only five centuries, but also the leap into electronic typesetting,
-            remaining essentially unchanged. It was popularised in the 1960s
-            with the release of Letraset sheets containing Lorem Ipsum passages,
-            and more recently with desktop publishing software like Aldus
-            PageMaker including versions of Lorem Ipsum.
-          </p>
-          <p>Write your review</p>
-          <textarea style={{ width: '100%', height: '50px' }}></textarea>
-          <button
-            onClick={() => {
-              setShowMovie(false);
-            }}
-          >
-            Submit
-          </button>
+          <div className='movieShowcaserContent'>
+            <p
+              className='movieShowcaserClose'
+              onClick={() => {
+                setShowMovie(false);
+              }}
+            >
+              X
+            </p>
+            <h2>Movie Name</h2>
+            <p style={{ textAlign: 'left' }}>
+              Lorem Ipsum is simply dummy text of the printing and typesetting
+              industry. Lorem Ipsum has been the industry's standard dummy text
+              ever since the 1500s, when an unknown printer took a galley of
+              type and scrambled it to make a type specimen book. It has
+              survived not only five centuries, but also the leap into
+              electronic typesetting, remaining essentially unchanged. It was
+              popularised in the 1960s with the release of Letraset sheets
+              containing Lorem Ipsum passages, and more recently with desktop
+              publishing software like Aldus PageMaker including versions of
+              Lorem Ipsum.
+            </p>
+            <p>Write your review</p>
+            <textarea className='movieShowcaserReviewArea'></textarea>
+            <button
+              onClick={() => {
+                setShowMovie(false);
+              }}
+            >
+              Submit
+            </button>
+            <div className='movieShowcaserReviews'>
+              <h3>Other movie reviews</h3>
+              <Reviews />
+              <Reviews />
+              <Reviews />
+            </div>
+          </div>
         </div>
       </div>
     </div>
