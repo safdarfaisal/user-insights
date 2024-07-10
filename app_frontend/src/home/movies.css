@@ -35,9 +35,15 @@
 }
 .movieShowcaser {
   height: 50vh;
+  overflow-y: hidden;
+  overflow-x: hidden;
   width: 50vw;
   background-color: #222;
   border-radius: 20px;
+}
+.movieShowcaserContent {
+  height: 50vh;
+  overflow-y: auto;
   padding: 20px 40px;
   display: flex;
   flex-direction: column;
@@ -47,4 +53,14 @@
 .movieShowcaserClose {
   align-self: flex-end;
   cursor: pointer;
+}
+.movieShowcaserReviewArea {
+  width: 100%;
+  min-height: 50px;
+  border-radius: 10px;
+}
+.movieShowcaserReviews {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
