@@ -1,24 +1,24 @@
 from django.db import models
-from django.contrib.auth.models import User
+from members.models import UserInfo
 from django.urls import reverse
 
 # Create your models here.
 
 class Movies(models.Model):
-    movieId = models.PositiveIntegerField(primary_key=True)
-    movieName = models.CharField()
-    movieDescription = models.TextField()
-    movieImage = models.URLField()
+    movie_id = models.PositiveIntegerField(primary_key=True)
+    movie_name = models.CharField(max_length=127)
+    movie_description = models.TextField()
+    movie_image = models.URLField()
 
     def __str__(self):
         return f"{self.movie_name}"
     
-
 class MovieUserReview(models.Model):
-    userId = models.ForeignKey(User, on_delete=models.CASCADE)
-    movieId = models.ForeignKey(Movies, on_delete=models.CASCADE)
+    user_id = models.ForeignKey(UserInfo, on_delete=models.CASCADE, db_column="user_id")
+    movie_id = models.ForeignKey(Movies, on_delete=models.CASCADE, db_column="movie_id")
     rating = models.FloatField()
     review = models.TextField()
 
     def __str__(self):
         return "User"
+    
