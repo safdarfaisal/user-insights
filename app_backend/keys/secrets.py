@@ -1,0 +1,2 @@
+OMDB_API_KEY = "6b64707c"
+DEFAULT_FILE_URL = "https://m.media-amazon.com/images/M/MV5BMzFkM2YwOTQtYzk2Mi00N2VlLWE3NTItN2YwNDg1YmY0ZDNmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SX300.jpg"
