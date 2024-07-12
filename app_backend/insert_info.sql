@@ -1,10 +1,15 @@
+DELETE FROM app_main_movies;
+
 INSERT INTO app_main_movies 
 (movie_id, movie_name, movie_description, movie_image) VALUES
-(1, 'The Matrix', 'A computer hacker learns from mysterious rebels about the true nature of his reality and his role in the war against its controllers.', 'matrix.jpg'),
-(2, 'Inception', 'A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.', 'inception.jpg'),
-(3, 'Interstellar', 'A team of explorers travel through a wormhole in space in an attempt to ensure humanitys survival.', 'interstellar.jpg'),
-(4, 'The Dark Knight', 'When the menace known as The Joker emerges from his mysterious past, he wreaks havoc and chaos on the people of Gotham.', 'dark_knight.jpg'),
-(5, 'Pulp Fiction', 'The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits intertwine in four tales of violence and redemption.', 'pulp_fiction.jpg');
+(1, 'The Matrix', 'A computer hacker learns from mysterious rebels about the true nature of his reality and his role in the war against its controllers.', 'https://m.media-amazon.com/images/M/MV5BNzQzOTk3OTAtNDQ0Zi00ZTVkLWI0MTEtMDllZjNkYzNjNTc4L2ltYWdlXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_SX300.jpg'),
+(2, 'Inception', 'A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.', 'https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_SX300.jpg'),
+(3, 'Interstellar', 'A team of explorers travel through a wormhole in space in an attempt to ensure humanitys survival.', 'https://m.media-amazon.com/images/M/MV5BZjdkOTU3MDktN2IxOS00OGEyLWFmMjktY2FiMmZkNWIyODZiXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SX300.jpg'),
+(4, 'The Dark Knight', 'When the menace known as The Joker emerges from his mysterious past, he wreaks havoc and chaos on the people of Gotham.', 'https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_SX300.jpg'),
+(5, 'Pulp Fiction', 'The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits intertwine in four tales of violence and redemption.', 'https://m.media-amazon.com/images/M/MV5BNGNhMDIzZTUtNTBlZi00MTRlLWFjM2ItYzViMjE3YzI5MjljXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX300.jpg'),
+(6, 'Home Alone', 'Lorem Ipsum', 'https://m.media-amazon.com/images/M/MV5BMzFkM2YwOTQtYzk2Mi00N2VlLWE3NTItN2YwNDg1YmY0ZDNmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SX300.jpg');
+
+DELETE FROM app_main_movieuserreview;
 
 INSERT INTO app_main_movieuserreview (rating, review, movie_id, user_id) VALUES
 (4.5, 'Amazing movie, loved the concept and execution!', 1, 1),
@@ -18,9 +23,15 @@ INSERT INTO app_main_movieuserreview (rating, review, movie_id, user_id) VALUES
 (4.7, 'The Dark Knight has unforgettable performances.', 4, 5),
 (4.4, 'Pulp Fiction is brilliantly crafted.', 5, 1);
 
+
+DELETE FROM members_userInfo;
+
 INSERT INTO members_userInfo (user_id, name, email, age, gender, date_of_birth) VALUES
 (1, 'John Doe', 'john.doe@gmail.com', 28, 'Male', '1995-04-12'),
 (2, 'Jane Smith', 'jane.smith@yahoo.com', 34, 'Female', '1989-07-23'),
 (3, 'Alex Johnson', 'alex.johnson@outlook.com', 25, 'Nonbinary', '1998-01-17'),
 (4, 'Chris Lee', 'chris.lee@hotmail.com', 31, 'Male', '1992-03-05'),
 (5, 'Pat Taylor', 'pat.taylor@icloud.com', 29, 'Female', '1994-08-29');
+
+
+

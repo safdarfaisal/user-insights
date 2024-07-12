@@ -17,7 +17,7 @@ function App() {
     const password = loginPasswordRef.current.value;
 
     try {
-      const response = await fetch('http://localhost:8000/members/login/', {
+      const response = await fetch('http://localhost:8000/api/members/login/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

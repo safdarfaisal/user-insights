@@ -1,8 +1,8 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Reviews from '../reusable/Reviews.js';
 import './movies.css';
 
-const MovieShowcaser = ({ setShowMovie }) => {
+const MovieShowcaser = ({ setShowMovie, movie }) => {
   return (
     <div className='movieShowcaserBackground'>
       <div>
@@ -16,18 +16,9 @@ const MovieShowcaser = ({ setShowMovie }) => {
             >
               X
             </p>
-            <h2>Movie Name</h2>
+            <h2>{movie.movie_name}</h2>
             <p style={{ textAlign: 'left' }}>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book. It has
-              survived not only five centuries, but also the leap into
-              electronic typesetting, remaining essentially unchanged. It was
-              popularised in the 1960s with the release of Letraset sheets
-              containing Lorem Ipsum passages, and more recently with desktop
-              publishing software like Aldus PageMaker including versions of
-              Lorem Ipsum.
+              {movie.movie_description}
             </p>
             <p>Write your review</p>
             <textarea className='movieShowcaserReviewArea'></textarea>
@@ -53,91 +44,54 @@ const MovieShowcaser = ({ setShowMovie }) => {
 
 const Movies = () => {
   const [showMovie, setShowMovie] = useState(false);
-  const [movieName, setMovieName] = useState('');
+  const [movies, setMovies] = useState([]);
+  const [selectedMovie, setSelectedMovie] = useState(null);
+
+  useEffect(() => {
+    getMovieList();
+  }, []);
+
+  const getMovieList = async () => {
+    try {
+      const response = await fetch("http://localhost:8000/api/movies/", {
+        method: "GET",
+        headers : {
+          'Content-Type' : 'application/json',
+          'Accept' : 'application/json',
+        },
+      });
+      const data = await response.json();
+
+      if (response.status === 200){
+        setMovies(data);      
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
   return (
     <>
-      {showMovie && <MovieShowcaser setShowMovie={setShowMovie} />}
+      {showMovie && selectedMovie && <MovieShowcaser setShowMovie={setShowMovie} movie={selectedMovie} />}
       <div className='movies'>
         <h3>Movies</h3>
         <div className='moviesContainer'>
-          <div
-            className='moviesItem'
-            onClick={() => {
-              setShowMovie(!showMovie);
-              setMovieName('name');
-            }}
-          >
+          {movies.map((movie) => {
+            return (<div 
+              key={movie.movie_id}
+              className='moveisItem'
+              onClick={() => {
+                setShowMovie(true);
+                setSelectedMovie(movie);
+              }}
+            > 
             <img
-              src={require('../images/movie1.jpeg')}
+              src={movie.movie_image}
+              alt={movie.movie_name}
               className='moviesImage'
-            />
-            <p>name</p>
-          </div>
-          <div
-            className='moviesItem'
-            onClick={() => {
-              setShowMovie(!showMovie);
-              setMovieName('name');
-            }}
-          >
-            <img
-              src={require('../images/movie2.jpeg')}
-              className='moviesImage'
-            />
-            <p>name</p>
-          </div>
-          <div
-            className='moviesItem'
-            onClick={() => {
-              setShowMovie(!showMovie);
-              setMovieName('name');
-            }}
-          >
-            <img
-              src={require('../images/movie3.jpeg')}
-              className='moviesImage'
-            />
-            <p>name</p>
-          </div>
-          <div
-            className='moviesItem'
-            onClick={() => {
-              setShowMovie(!showMovie);
-              setMovieName('name');
-            }}
-          >
-            <img
-              src={require('../images/movie4.jpeg')}
-              className='moviesImage'
-            />
-            <p>name</p>
-          </div>
-          <div
-            className='moviesItem'
-            onClick={() => {
-              setShowMovie(!showMovie);
-              setMovieName('name');
-            }}
-          >
-            <img
-              src={require('../images/movie5.jpeg')}
-              className='moviesImage'
-            />
-            <p>name</p>
-          </div>
-          <div
-            className='moviesItem'
-            onClick={() => {
-              setShowMovie(!showMovie);
-              setMovieName('name');
-            }}
-          >
-            <img
-              src={require('../images/movie6.jpeg')}
-              className='moviesImage'
-            />
-            <p>name</p>
-          </div>
+            ></img>
+            <p>{movie.movie_name}</p>
+            </div> 
+          )})}
         </div>
       </div>
     </>
