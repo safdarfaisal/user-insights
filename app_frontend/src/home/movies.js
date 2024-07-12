@@ -1,8 +1,31 @@
 import { useState, useEffect } from 'react';
-import Reviews from '../reusable/Reviews.js';
+import Review from '../reusable/Reviews.js';
 import './movies.css';
 
 const MovieShowcaser = ({ setShowMovie, movie }) => {
+  const [reviews, setReviews] = useState([]);
+  
+  useEffect(() => {
+    getMovieReviews();
+  }, );
+
+  const getMovieReviews = async () => {
+    try {
+      const response = await fetch(`http://localhost:8000/api/movies/reviews/${movie.movie_id}/`);
+
+      const data = await response.json();
+
+      if(response.status === 200){
+        setReviews(data)
+      }
+
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+ 
+  
   return (
     <div className='movieShowcaserBackground'>
       <div>
@@ -31,9 +54,15 @@ const MovieShowcaser = ({ setShowMovie, movie }) => {
             </button>
             <div className='movieShowcaserReviews'>
               <h3>Other movie reviews</h3>
-              <Reviews />
-              <Reviews />
-              <Reviews />
+              {reviews.map((review) => {
+                return (
+                  <Review
+                  movieName={review.movie_name} 
+                  stars={review.rating}
+                  userName={review.user_name}
+                  review={review.review} />
+                )
+              })}
             </div>
           </div>
         </div>
@@ -49,11 +78,11 @@ const Movies = () => {
 
   useEffect(() => {
     getMovieList();
-  }, []);
+  }, );
 
   const getMovieList = async () => {
     try {
-      const response = await fetch("http://localhost:8000/api/movies/", {
+      const response = await fetch('http://localhost:8000/api/movies/', {
         method: "GET",
         headers : {
           'Content-Type' : 'application/json',
